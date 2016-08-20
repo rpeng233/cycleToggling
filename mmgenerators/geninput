@@ -1,0 +1,17 @@
+#!/bin/bash
+size=1e5
+value=$(printf '%.0f' $size)
+exec/genChainUniformStretch $value > data/genChainUniformStretch${size}.txt
+exec/genChainExpStretch $value > data/genChainExpStretch${size}.txt
+exec/gen2MeshUnweightedUniformStretch $value > data/gen2MeshUnweightedUniformStretch${size}.txt
+exec/gen2MeshUnweightedExpStretch $value > data/gen2MeshUnweightedExpStretch${size}.txt
+exec/gen2MeshUniformStretch $value > data/gen2MeshUniformStretch${size}.txt
+exec/gen2MeshExpStretch $value > data/gen2MeshExpStretch${size}.txt
+exec/gen3MeshUnweightedUniformStretch $value > data/gen3MeshUnweightedUniformStretch${size}.txt
+exec/gen3MeshUnweightedExpStretch $value > data/gen3MeshUnweightedExpStretch${size}.txt
+exec/gen3MeshWeightedUniformStretch $value > data/gen3MeshWeightedUniformStretch${size}.txt
+exec/gen3MeshWeightedExpStretch $value > data/gen3MeshWeightedExpStretch${size}.txt
+exec/genFixedLengthUniformStretch $value 1000 1 > data/genFixedLengthUniformStretch${size}.txt
+exec/genFixedLengthExpStretch $value 1000 1 > data/genFixedLengthExpStretch${size}.txt
+exec/genRandomUniformStretch $value $((2*$value)) > data/genRandomUniformStretch${size}.txt
+exec/genRandomExpStretch $value $((2*$value)) > data/genRandomExpStretch${size}.txt

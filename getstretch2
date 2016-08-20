@@ -1,0 +1,40 @@
+#!/bin/bash
+size=1e6
+rhs=01
+mkdir results_${size}_${rhs}
+for file in gen3MeshUnweightedExpStretch genRandomUniformStretch gen3MeshUnweightedUniformStretch gen3MeshWeightedExpStretch gen3MeshWeightedUniformStretch
+do
+    rm -rf results_${size}_${rhs}/$file.csv
+	echo $file
+	echo 'linesolver'
+        echo results_${size}_${rhs}/$file.csv
+        echo graphdata/${file}${size}.txt
+        echo graphdata/${file}_${rhs}_rhs.mtx
+	for ((i=0; i<10; i++))
+	do
+		./linesolver graphdata/${file}${size}.txt graphdata/${file}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/$file.csv
+	done
+	echo 'treesolver'
+	for ((i=0; i<10; i++))
+	do
+		./treesolver graphdata/${file}${size}.txt graphdata/${file}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/$file.csv
+	done
+	#echo 'cgsolver'
+	#for ((i=0; i<10; i++))
+	#do
+	#	./cgsolver $file.txt ${file}_rhs.mtx >> results/$file.csv
+	#done
+
+	echo $file
+        echo 'recursivelinesolver'
+        for ((i=0; i<10; i++))
+        do
+                ./recursiveLineSolverFixed graphdata/${file}${size}.txt graphdata/${file}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/$file.csv
+        done
+        echo 'recursivetreesolver'
+        for ((i=0; i<10; i++))
+        do
+                ./recursiveTreeSolver graphdata/${file}${size}.txt graphdata/${file}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/$file.csv
+        done
+
+done

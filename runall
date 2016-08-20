@@ -1,0 +1,3 @@
+./geninput $1 $3
+./genrhs $1
+./batchtest $1 $2

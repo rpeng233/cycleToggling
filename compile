@@ -1,0 +1,5 @@
+#!/bin/bash
+for file in cgsolver cgsolver2 genChainExpStretch gen2MeshExpStretch genChainUniformStretch gen2MeshUniformStretch genFixedLengthExpStretch gen2MeshUnweightedExpStretch genFixedLengthUniformStretch gen2MeshUnweightedUniformStretch genRandomExpStretch gen3MeshUnweightedExpStretch genRandomUniformStretch gen3MeshUnweightedUniformStretch genRandRhs gen3MeshWeightedExpStretch linesolver gen3MeshWeightedUniformStretch treesolver recursiveLineSolverFixed recursiveTreeSolver gen01Rhs graphsp2mm
+do
+	./go $file -O3
+done

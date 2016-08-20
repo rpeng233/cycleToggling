@@ -1,0 +1,10 @@
+#!/bin/bash
+size=$1
+rm stretchfile${size}.csv
+for file in genChainExpStretch gen2MeshExpStretch genChainUniformStretch gen2MeshUniformStretch genFixedLengthExpStretch gen2MeshUnweightedExpStretch genFixedLengthUniformStretch gen2MeshUnweightedUniformStretch genRandomExpStretch gen3MeshUnweightedExpStretch genRandomUniformStretch gen3MeshUnweightedUniformStretch gen3MeshWeightedExpStretch gen3MeshWeightedUniformStretch
+do
+    
+    echo -n "$file$size "  >> stretchfile${size}.csv
+    exec/stretch graphdata/${file}${size}.txt  >> stretchfile${size}.csv
+
+done

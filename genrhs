@@ -1,0 +1,8 @@
+#!/bin/bash
+size=$1
+for file in genChainExpStretch gen2MeshExpStretch genChainUniformStretch gen2MeshUniformStretch genFixedLengthExpStretch gen2MeshUnweightedExpStretch genFixedLengthUniformStretch gen2MeshUnweightedUniformStretch genRandomExpStretch gen3MeshUnweightedExpStretch genRandomUniformStretch gen3MeshUnweightedUniformStretch gen3MeshWeightedExpStretch gen3MeshWeightedUniformStretch
+do
+	echo graphdata/${file}${size}.txt
+	exec/gen01Rhs graphdata/${file}${size}.txt
+        exec/genRandRhs graphdata/${file}${size}.txt
+done
