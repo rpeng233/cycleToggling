@@ -70,7 +70,7 @@ int main(int argt, char **args) {
   rS[0] = 0;
   FOR(i, n - 1) {
     r[i] = rand() % 10000 + 1;
-    printf("%d %d %d\n", i, i + 1, r[i]);
+    printf("%d %d %.16lf\n", i, i + 1, r[i]);
     rS[i + 1] = rS[i] + r[i];
   }
 
