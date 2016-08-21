@@ -7,7 +7,7 @@ fi
 
 size=$1
 rhs=$2
-mkdir results_${size}_${rhs}
+mkdir -p results_${size}_${rhs}
 for file in genChainExpStretch gen2MeshExpStretch genChainUniformStretch gen2MeshUniformStretch genFixedLengthExpStretch gen2MeshUnweightedExpStretch genFixedLengthUniformStretch gen2MeshUnweightedUniformStretch genRandomExpStretch gen3MeshUnweightedExpStretch genRandomUniformStretch gen3MeshUnweightedUniformStretch gen3MeshWeightedExpStretch gen3MeshWeightedUniformStretch
 do
 	rm -rf results_${size}_${rhs}/$file.csv
