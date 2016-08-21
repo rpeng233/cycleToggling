@@ -8,6 +8,7 @@ fi
 size=$1
 value=$(printf '%.0f' $size)
 hop=$(printf '%.0f' $2)
+mkdir -p graphdata
 exec/genChainUniformStretch $value 0 > graphdata/genChainUniformStretch${size}.txt
 exec/genChainExpStretch $value 0 > graphdata/genChainExpStretch${size}.txt
 exec/gen2MeshUnweightedUniformStretch $value 0 > graphdata/gen2MeshUnweightedUniformStretch${size}.txt
