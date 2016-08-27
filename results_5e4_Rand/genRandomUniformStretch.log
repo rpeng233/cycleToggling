@@ -1,0 +1,280 @@
+linesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.0789978676639294
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.0377755180488748
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.0002394458006165
+linesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.0789978676639294
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.0377755180488748
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.0002394458006165
+linesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.0789978676639294
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.0377755180488748
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.0002394458006165
+linesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.0789978676639294
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.0377755180488748
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.0002394458006165
+linesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.0789978676639294
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.0377755180488748
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.0002394458006165
+linesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.0789978676639294
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.0377755180488748
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.0002394458006165
+linesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.0789978676639294
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.0377755180488748
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.0002394458006165
+linesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.0789978676639294
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.0377755180488748
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.0002394458006165
+linesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.0789978676639294
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.0377755180488748
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.0002394458006165
+linesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.0789978676639294
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.0377755180488748
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.0002394458006165
+treesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.000239
+treesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.000239
+treesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.000239
+treesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.000239
+treesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.000239
+treesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.000239
+treesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.000239
+treesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.000239
+treesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.000239
+treesolver
+iteration 1: energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 2: energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 3: energy = 6392.731359 = 6392.731359, xb = 6392.731939, voltage energy = 6392.732758, gap = 0.000239
+recursivelinesolver
+iteration 0: residue = 0.000396, energy = 6393.237223 = 6393.237223, xb = 6393.195278, voltage energy = 6394.011279, gap = 0.857946
+iteration 1: residue = 0.000139, energy = 6392.945501 = 6392.945501, xb = 6392.940292, voltage energy = 6393.265897, gap = 0.330814
+iteration 2: residue = 0.000075, energy = 6392.830040 = 6392.830040, xb = 6392.838702, voltage energy = 6393.001634, gap = 0.154272
+iteration 3: residue = 0.000067, energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 4: residue = 0.000067, energy = 6392.767370 = 6392.767370, xb = 6392.777498, voltage energy = 6392.845722, gap = 0.058096
+iteration 5: residue = 0.000066, energy = 6392.758147 = 6392.758147, xb = 6392.765426, voltage energy = 6392.818380, gap = 0.045674
+iteration 6: residue = 0.000066, energy = 6392.754278 = 6392.754278, xb = 6392.759500, voltage energy = 6392.807436, gap = 0.042713
+iteration 7: residue = 0.000066, energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 8: residue = 0.000003, energy = 6392.733045 = 6392.733045, xb = 6392.735382, voltage energy = 6392.740166, gap = 0.002447
+recursivelinesolver
+iteration 0: residue = 0.000396, energy = 6393.237223 = 6393.237223, xb = 6393.195278, voltage energy = 6394.011279, gap = 0.857946
+iteration 1: residue = 0.000139, energy = 6392.945501 = 6392.945501, xb = 6392.940292, voltage energy = 6393.265897, gap = 0.330814
+iteration 2: residue = 0.000075, energy = 6392.830040 = 6392.830040, xb = 6392.838702, voltage energy = 6393.001634, gap = 0.154272
+iteration 3: residue = 0.000067, energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 4: residue = 0.000067, energy = 6392.767370 = 6392.767370, xb = 6392.777498, voltage energy = 6392.845722, gap = 0.058096
+iteration 5: residue = 0.000066, energy = 6392.758147 = 6392.758147, xb = 6392.765426, voltage energy = 6392.818380, gap = 0.045674
+iteration 6: residue = 0.000066, energy = 6392.754278 = 6392.754278, xb = 6392.759500, voltage energy = 6392.807436, gap = 0.042713
+iteration 7: residue = 0.000066, energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 8: residue = 0.000003, energy = 6392.733045 = 6392.733045, xb = 6392.735382, voltage energy = 6392.740166, gap = 0.002447
+recursivelinesolver
+iteration 0: residue = 0.000396, energy = 6393.237223 = 6393.237223, xb = 6393.195278, voltage energy = 6394.011279, gap = 0.857946
+iteration 1: residue = 0.000139, energy = 6392.945501 = 6392.945501, xb = 6392.940292, voltage energy = 6393.265897, gap = 0.330814
+iteration 2: residue = 0.000075, energy = 6392.830040 = 6392.830040, xb = 6392.838702, voltage energy = 6393.001634, gap = 0.154272
+iteration 3: residue = 0.000067, energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 4: residue = 0.000067, energy = 6392.767370 = 6392.767370, xb = 6392.777498, voltage energy = 6392.845722, gap = 0.058096
+iteration 5: residue = 0.000066, energy = 6392.758147 = 6392.758147, xb = 6392.765426, voltage energy = 6392.818380, gap = 0.045674
+iteration 6: residue = 0.000066, energy = 6392.754278 = 6392.754278, xb = 6392.759500, voltage energy = 6392.807436, gap = 0.042713
+iteration 7: residue = 0.000066, energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 8: residue = 0.000003, energy = 6392.733045 = 6392.733045, xb = 6392.735382, voltage energy = 6392.740166, gap = 0.002447
+recursivelinesolver
+iteration 0: residue = 0.000396, energy = 6393.237223 = 6393.237223, xb = 6393.195278, voltage energy = 6394.011279, gap = 0.857946
+iteration 1: residue = 0.000139, energy = 6392.945501 = 6392.945501, xb = 6392.940292, voltage energy = 6393.265897, gap = 0.330814
+iteration 2: residue = 0.000075, energy = 6392.830040 = 6392.830040, xb = 6392.838702, voltage energy = 6393.001634, gap = 0.154272
+iteration 3: residue = 0.000067, energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 4: residue = 0.000067, energy = 6392.767370 = 6392.767370, xb = 6392.777498, voltage energy = 6392.845722, gap = 0.058096
+iteration 5: residue = 0.000066, energy = 6392.758147 = 6392.758147, xb = 6392.765426, voltage energy = 6392.818380, gap = 0.045674
+iteration 6: residue = 0.000066, energy = 6392.754278 = 6392.754278, xb = 6392.759500, voltage energy = 6392.807436, gap = 0.042713
+iteration 7: residue = 0.000066, energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 8: residue = 0.000003, energy = 6392.733045 = 6392.733045, xb = 6392.735382, voltage energy = 6392.740166, gap = 0.002447
+recursivelinesolver
+iteration 0: residue = 0.000396, energy = 6393.237223 = 6393.237223, xb = 6393.195278, voltage energy = 6394.011279, gap = 0.857946
+iteration 1: residue = 0.000139, energy = 6392.945501 = 6392.945501, xb = 6392.940292, voltage energy = 6393.265897, gap = 0.330814
+iteration 2: residue = 0.000075, energy = 6392.830040 = 6392.830040, xb = 6392.838702, voltage energy = 6393.001634, gap = 0.154272
+iteration 3: residue = 0.000067, energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 4: residue = 0.000067, energy = 6392.767370 = 6392.767370, xb = 6392.777498, voltage energy = 6392.845722, gap = 0.058096
+iteration 5: residue = 0.000066, energy = 6392.758147 = 6392.758147, xb = 6392.765426, voltage energy = 6392.818380, gap = 0.045674
+iteration 6: residue = 0.000066, energy = 6392.754278 = 6392.754278, xb = 6392.759500, voltage energy = 6392.807436, gap = 0.042713
+iteration 7: residue = 0.000066, energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 8: residue = 0.000003, energy = 6392.733045 = 6392.733045, xb = 6392.735382, voltage energy = 6392.740166, gap = 0.002447
+recursivelinesolver
+iteration 0: residue = 0.000396, energy = 6393.237223 = 6393.237223, xb = 6393.195278, voltage energy = 6394.011279, gap = 0.857946
+iteration 1: residue = 0.000139, energy = 6392.945501 = 6392.945501, xb = 6392.940292, voltage energy = 6393.265897, gap = 0.330814
+iteration 2: residue = 0.000075, energy = 6392.830040 = 6392.830040, xb = 6392.838702, voltage energy = 6393.001634, gap = 0.154272
+iteration 3: residue = 0.000067, energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 4: residue = 0.000067, energy = 6392.767370 = 6392.767370, xb = 6392.777498, voltage energy = 6392.845722, gap = 0.058096
+iteration 5: residue = 0.000066, energy = 6392.758147 = 6392.758147, xb = 6392.765426, voltage energy = 6392.818380, gap = 0.045674
+iteration 6: residue = 0.000066, energy = 6392.754278 = 6392.754278, xb = 6392.759500, voltage energy = 6392.807436, gap = 0.042713
+iteration 7: residue = 0.000066, energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 8: residue = 0.000003, energy = 6392.733045 = 6392.733045, xb = 6392.735382, voltage energy = 6392.740166, gap = 0.002447
+recursivelinesolver
+iteration 0: residue = 0.000396, energy = 6393.237223 = 6393.237223, xb = 6393.195278, voltage energy = 6394.011279, gap = 0.857946
+iteration 1: residue = 0.000139, energy = 6392.945501 = 6392.945501, xb = 6392.940292, voltage energy = 6393.265897, gap = 0.330814
+iteration 2: residue = 0.000075, energy = 6392.830040 = 6392.830040, xb = 6392.838702, voltage energy = 6393.001634, gap = 0.154272
+iteration 3: residue = 0.000067, energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 4: residue = 0.000067, energy = 6392.767370 = 6392.767370, xb = 6392.777498, voltage energy = 6392.845722, gap = 0.058096
+iteration 5: residue = 0.000066, energy = 6392.758147 = 6392.758147, xb = 6392.765426, voltage energy = 6392.818380, gap = 0.045674
+iteration 6: residue = 0.000066, energy = 6392.754278 = 6392.754278, xb = 6392.759500, voltage energy = 6392.807436, gap = 0.042713
+iteration 7: residue = 0.000066, energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 8: residue = 0.000003, energy = 6392.733045 = 6392.733045, xb = 6392.735382, voltage energy = 6392.740166, gap = 0.002447
+recursivelinesolver
+iteration 0: residue = 0.000396, energy = 6393.237223 = 6393.237223, xb = 6393.195278, voltage energy = 6394.011279, gap = 0.857946
+iteration 1: residue = 0.000139, energy = 6392.945501 = 6392.945501, xb = 6392.940292, voltage energy = 6393.265897, gap = 0.330814
+iteration 2: residue = 0.000075, energy = 6392.830040 = 6392.830040, xb = 6392.838702, voltage energy = 6393.001634, gap = 0.154272
+iteration 3: residue = 0.000067, energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 4: residue = 0.000067, energy = 6392.767370 = 6392.767370, xb = 6392.777498, voltage energy = 6392.845722, gap = 0.058096
+iteration 5: residue = 0.000066, energy = 6392.758147 = 6392.758147, xb = 6392.765426, voltage energy = 6392.818380, gap = 0.045674
+iteration 6: residue = 0.000066, energy = 6392.754278 = 6392.754278, xb = 6392.759500, voltage energy = 6392.807436, gap = 0.042713
+iteration 7: residue = 0.000066, energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 8: residue = 0.000003, energy = 6392.733045 = 6392.733045, xb = 6392.735382, voltage energy = 6392.740166, gap = 0.002447
+recursivelinesolver
+iteration 0: residue = 0.000396, energy = 6393.237223 = 6393.237223, xb = 6393.195278, voltage energy = 6394.011279, gap = 0.857946
+iteration 1: residue = 0.000139, energy = 6392.945501 = 6392.945501, xb = 6392.940292, voltage energy = 6393.265897, gap = 0.330814
+iteration 2: residue = 0.000075, energy = 6392.830040 = 6392.830040, xb = 6392.838702, voltage energy = 6393.001634, gap = 0.154272
+iteration 3: residue = 0.000067, energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 4: residue = 0.000067, energy = 6392.767370 = 6392.767370, xb = 6392.777498, voltage energy = 6392.845722, gap = 0.058096
+iteration 5: residue = 0.000066, energy = 6392.758147 = 6392.758147, xb = 6392.765426, voltage energy = 6392.818380, gap = 0.045674
+iteration 6: residue = 0.000066, energy = 6392.754278 = 6392.754278, xb = 6392.759500, voltage energy = 6392.807436, gap = 0.042713
+iteration 7: residue = 0.000066, energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 8: residue = 0.000003, energy = 6392.733045 = 6392.733045, xb = 6392.735382, voltage energy = 6392.740166, gap = 0.002447
+recursivelinesolver
+iteration 0: residue = 0.000396, energy = 6393.237223 = 6393.237223, xb = 6393.195278, voltage energy = 6394.011279, gap = 0.857946
+iteration 1: residue = 0.000139, energy = 6392.945501 = 6392.945501, xb = 6392.940292, voltage energy = 6393.265897, gap = 0.330814
+iteration 2: residue = 0.000075, energy = 6392.830040 = 6392.830040, xb = 6392.838702, voltage energy = 6393.001634, gap = 0.154272
+iteration 3: residue = 0.000067, energy = 6392.785241 = 6392.785241, xb = 6392.797851, voltage energy = 6392.889459, gap = 0.078998
+iteration 4: residue = 0.000067, energy = 6392.767370 = 6392.767370, xb = 6392.777498, voltage energy = 6392.845722, gap = 0.058096
+iteration 5: residue = 0.000066, energy = 6392.758147 = 6392.758147, xb = 6392.765426, voltage energy = 6392.818380, gap = 0.045674
+iteration 6: residue = 0.000066, energy = 6392.754278 = 6392.754278, xb = 6392.759500, voltage energy = 6392.807436, gap = 0.042713
+iteration 7: residue = 0.000066, energy = 6392.751929 = 6392.751929, xb = 6392.755250, voltage energy = 6392.796347, gap = 0.037776
+iteration 8: residue = 0.000003, energy = 6392.733045 = 6392.733045, xb = 6392.735382, voltage energy = 6392.740166, gap = 0.002447
+recursivetreesolver
+residual 3.955690e-04
+residual 1.392825e-04
+residual 7.510511e-05
+residual 6.732268e-05
+residual 6.656973e-05
+residual 6.638673e-05
+residual 6.637292e-05
+residual 6.626873e-05
+residual 3.126168e-06
+recursivetreesolver
+residual 3.955690e-04
+residual 1.392825e-04
+residual 7.510511e-05
+residual 6.732268e-05
+residual 6.656973e-05
+residual 6.638673e-05
+residual 6.637292e-05
+residual 6.626873e-05
+residual 3.126168e-06
+recursivetreesolver
+residual 3.955690e-04
+residual 1.392825e-04
+residual 7.510511e-05
+residual 6.732268e-05
+residual 6.656973e-05
+residual 6.638673e-05
+residual 6.637292e-05
+residual 6.626873e-05
+residual 3.126168e-06
+recursivetreesolver
+residual 3.955690e-04
+residual 1.392825e-04
+residual 7.510511e-05
+residual 6.732268e-05
+residual 6.656973e-05
+residual 6.638673e-05
+residual 6.637292e-05
+residual 6.626873e-05
+residual 3.126168e-06
+recursivetreesolver
+residual 3.955690e-04
+residual 1.392825e-04
+residual 7.510511e-05
+residual 6.732268e-05
+residual 6.656973e-05
+residual 6.638673e-05
+residual 6.637292e-05
+residual 6.626873e-05
+residual 3.126168e-06
+recursivetreesolver
+residual 3.955690e-04
+residual 1.392825e-04
+residual 7.510511e-05
+residual 6.732268e-05
+residual 6.656973e-05
+residual 6.638673e-05
+residual 6.637292e-05
+residual 6.626873e-05
+residual 3.126168e-06
+recursivetreesolver
+residual 3.955690e-04
+residual 1.392825e-04
+residual 7.510511e-05
+residual 6.732268e-05
+residual 6.656973e-05
+residual 6.638673e-05
+residual 6.637292e-05
+residual 6.626873e-05
+residual 3.126168e-06
+recursivetreesolver
+residual 3.955690e-04
+residual 1.392825e-04
+residual 7.510511e-05
+residual 6.732268e-05
+residual 6.656973e-05
+residual 6.638673e-05
+residual 6.637292e-05
+residual 6.626873e-05
+residual 3.126168e-06
+recursivetreesolver
+residual 3.955690e-04
+residual 1.392825e-04
+residual 7.510511e-05
+residual 6.732268e-05
+residual 6.656973e-05
+residual 6.638673e-05
+residual 6.637292e-05
+residual 6.626873e-05
+residual 3.126168e-06
+recursivetreesolver
+residual 3.955690e-04
+residual 1.392825e-04
+residual 7.510511e-05
+residual 6.732268e-05
+residual 6.656973e-05
+residual 6.638673e-05
+residual 6.637292e-05
+residual 6.626873e-05
+residual 3.126168e-06
