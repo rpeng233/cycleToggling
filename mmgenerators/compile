@@ -1,5 +1,6 @@
 #!/bin/bash
-for file in genChainExpStretch gen2MeshExpStretch genChainUniformStretch gen2MeshUniformStretch genFixedLengthExpStretch gen2MeshUnweightedExpStretch genFixedLengthUniformStretch gen2MeshUnweightedUniformStretch genRandomExpStretch gen3MeshUnweightedExpStretch genRandomUniformStretch gen3MeshUnweightedUniformStretch gen3MeshWeightedExpStretch gen3MeshWeightedUniformStretch
+mkdir exec
+for file in genChainExpStretch gen2MeshWeightedExpStretch genChainUniformStretch gen2MeshWeightedUniformStretch genFixedLengthUnweightedExpStretch genFixedLengthWeightedExpStretch gen2MeshUnweightedExpStretch genFixedLengthWeightedUniformStretch genFixedLengthUnweightedUniformStretch gen2MeshUnweightedUniformStretch genRandomWeightedExpStretch genRandomUnweightedExpStretch gen3MeshUnweightedExpStretch genRandomUnweightedUniformStretch genRandomWeightedUniformStretch gen3MeshUnweightedUniformStretch gen3MeshWeightedExpStretch gen3MeshWeightedUniformStretch
 do
-	/home/kdeweese/build/gcc/4.8.2/bin/g++ source/$file.cpp -o exec/$file -O3 --std=c++11 -L/home/kdeweese/build/gcc/4.8.2/lib64
+	g++ source/$file.cpp -o exec/$file -O3 --std=c++11
 done

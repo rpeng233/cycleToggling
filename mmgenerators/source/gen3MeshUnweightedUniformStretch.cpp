@@ -1,128 +1,132 @@
-#include <cstdlib>
-#include <cstdio> 
-#include <cmath>
-#include <cassert>
 #include <iostream>
-#include <vector>
-#include <map>
-
-using std::cout;
-using std::cerr;
-using std::endl;
-
-#define SIZE(x) (int((x).size()))
-#define rep(i,l,r) for (int i=(l); i<=(r); i++)
-#define repd(i,r,l) for (int i=(r); i>=(l); i--)
-#define rept(i,c) for (typeof((c).begin()) i=(c).begin(); i!=(c).end(); i++)
-
-int a[300][300][300];
-double ew[27000000];
-std::map<double, int> mp;
-double r[27000000];
-double diag[2700000];
-
-double genrand()
-{
-	double r=RAND_MAX;
-	return rand()/r/r+rand()/r;	//windows无人权
-}
-
-int sample(double totw, int m)
-{
-	double v=totw*genrand();
-	std::map<double, int>::iterator it=mp.lower_bound(v);
-	if (it==mp.end()) it--;
-	return it->second;
-}
+#include <iomanip>
+#include <math.h>
 
 int main(int argc, char *argv[])
 {
-	if (argc < 2) {
-		cerr << "Please specify n." << endl;
-		return -1;
-	}
+  if (argc < 2) {
+    std::cerr << "Please specify n." << std::endl;
+    return -1;
+  }
+  
+  size_t n = atol(argv[1]);
+  
+  int width=int(pow(n,1.0/3.0));
+  n=width*width*width;
 
-	size_t n = atol(argv[1]);
-		
-	int width=int(pow(n,1.0/3.0));
-	n=width*width*width;
-	
-	int m = width*width*(width-1)*3-(n-1);
+  size_t precdigits=6;
 
-	int now=0;
-	int flag=1, flag2=1;
-	rep(k,0,width-1)
-	{
-		if (flag2)
-			rep(i,0,width-1)
-			{
-				if (flag)
-					repd(j,width-1,0)
-						a[k][i][j]=now, now++;
-				else
-					rep(j,0,width-1)
-						a[k][i][j]=now, now++;
-				flag=1-flag;
-			}
-		else
-			repd(i,width-1,0)
-			{
-				if (flag)
-					repd(j,width-1,0)
-						a[k][i][j]=now, now++;
-				else
-					rep(j,0,width-1)
-						a[k][i][j]=now, now++;
-				flag=1-flag;
-			}
-		flag2=1-flag2;
-	}
+  int*** a = new int**[width];
+  for(int i=0; i < width; ++i) {
+    a[i] = new int*[width];
+    for(int j=0; j < width; ++j) {
+      a[i][j] = new int[width];
+    }
+  }
 
-	printf("%%%%MatrixMarket matrix coordinate real symmetric\n%%\n");
-	cout << n << ' ' << n  << ' ' << m+n+n << endl;
+  double *diag = new double[n];
+  for(int i=0; i < n; ++i) {
+    diag[i]=0;
+  }
 
-	for (size_t i = 0; i < n - 1; i++) {
-		r[i+1] = 1;
-		cout << i+1 << ' ' << i + 2 << ' ' << -1./r[i+1] << endl;
-		diag[i]+=1./r[i+1];
-		diag[i+1]+=1./r[i+1];
-		r[i+1]+=r[i];
-	}
-		
-	size_t s = 0;
-	rep(i,0,width-1)
-		rep(j,0,width-1)
-			rep(k,0,width-2)
-			{
-				if (abs(a[i][j][k]-a[i][j][k+1])!=1)
-				{
-					double w=abs(r[a[i][j][k]]-r[a[i][j][k+1]]); 
-					cout << a[i][j][k]+1 << ' ' << a[i][j][k+1]+1 << ' ' << -1./w << endl;
-					diag[a[i][j][k]]+=1./w;
-					diag[a[i][j][k+1]]+=1./w;
-					ew[s]=w; s++;
-				}
-				if (abs(a[i][k][j]-a[i][k+1][j])!=1)
-				{
-					double w=abs(r[a[i][k][j]]-r[a[i][k+1][j]]); 
-					cout << a[i][k][j]+1 << ' ' << a[i][k+1][j]+1 << ' ' << -1./w << endl;
-					diag[a[i][k][j]]+=1./w;
-					diag[a[i][k+1][j]]+=1./w;
-					ew[s]=w; s++;
-				}
-				if (abs(a[k][i][j]-a[k+1][i][j])!=1)
-				{
-					double w=abs(r[a[k][i][j]]-r[a[k+1][i][j]]); 
-					cout << a[k][i][j]+1 << ' ' << a[k+1][i][j]+1 << ' ' << -1./w << endl;
-					diag[a[k][i][j]]+=1./w;
-					diag[a[k+1][i][j]]+=1./w;
-					ew[s]=w; s++; 
-				}
-			}
-	
-	rep(i,0,n-1)			
-	  cout << i+1 << ' ' << i+1 << ' ' << diag[i] << std::endl;
-	
+  int m=width*width*(width-1)*3-(n-1);
+  
+  double *rS = new double[n];
 
-	return 0;
+  int now=0;
+  int flag=1, flag2=1;
+
+  for(int k=0; k <= width-1; ++k) {
+    if(flag2) {
+      for(int i=0; i <= width-1; ++i) {
+        if(flag) {
+          for(int j=width-1; j >= 0; j--) {
+            a[k][i][j]=now++;
+          }
+        }
+        else {
+          for(int j=0; j <= width-1; ++j) {
+            a[k][i][j]=now++;
+          }
+        }
+        flag=1-flag;
+      }
+    }
+    else {
+      for(int i=width-1; i >= 0; --i) {
+        if(flag) {
+          for(int j=width-1; j >= 0; --j) {
+            a[k][i][j]=now++;
+          }
+        }
+        else {
+          for(int j=0; j <= width-1; ++j) {
+            a[k][i][j]=now++;
+          }
+        }
+        flag=1-flag;
+      }
+    }
+    flag2=1-flag2;
+  }
+    
+  printf("%%%%MatrixMarket matrix coordinate real symmetric\n%%\n%%Total Stretch %d\n", m);
+  std::cout << n << ' ' << n  << ' ' << m+n-1+n << std::endl;
+
+  rS[0]=0;
+  for(int i=0; i < n-1; ++i) {
+    rS[i+1]=rS[i]+1;
+  }
+
+  for(int i=0; i < n-1; ++i) {
+    double roundr=round(pow(10.,precdigits)/(rS[i+1]-rS[i]))/pow(10.,precdigits);
+    std::cout << i+1 << ' ' << i+2 << ' ' << -roundr << std::endl;
+    diag[i]+=roundr;
+    diag[i+1]+=roundr;
+  }
+  
+  for(int i=0; i <= width-1; ++i) {
+    for(int j=0; j <= width-1; ++j) {
+      for(int k=0; k <= width-2; ++k) {
+        if(abs(a[i][j][k]-a[i][j][k+1])!=1) {
+          double r=abs(rS[a[i][j][k]]-rS[a[i][j][k+1]]);
+          double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+          std::cout << a[i][j][k]+1 << ' ' << a[i][j][k+1]+1 << ' ' << -roundr << std::endl;
+          diag[a[i][j][k]]+=roundr;
+          diag[a[i][j][k+1]]+=roundr;
+        }
+        if(abs(a[i][k][j]-a[i][k+1][j])!=1) {
+          double r=abs(rS[a[i][k][j]]-rS[a[i][k+1][j]]); 
+          double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+          std::cout << a[i][k][j]+1 << ' ' << a[i][k+1][j]+1 << ' ' << -roundr << std::endl;
+          diag[a[i][k][j]]+=roundr;
+          diag[a[i][k+1][j]]+=roundr;
+        }
+        if(abs(a[k][i][j]-a[k+1][i][j])!=1) {
+          double r=abs(rS[a[k][i][j]]-rS[a[k+1][i][j]]);
+          double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+          std::cout << a[k][i][j]+1 << ' ' << a[k+1][i][j]+1 << ' ' << -roundr << std::endl;
+          diag[a[k][i][j]]+=roundr;
+          diag[a[k+1][i][j]]+=roundr;
+        }
+      }
+    }
+  }
+  
+  for(int i=0; i < n; ++i) {
+    std::cout << i+1 << ' ' << i+1 << ' ' << std::setprecision(precdigits+1) << diag[i] << std::endl;
+  }
+
+  for(int i=0; i < width; ++i) {
+    for(int j=0; j < width; j++) {
+      delete a[i][j];
+    }
+    delete a[i];
+  }
+
+  delete a;
+  delete diag;
+  delete rS;
+
+  return 0;
 }

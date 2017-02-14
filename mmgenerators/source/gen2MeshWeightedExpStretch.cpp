@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
   int m=width*(width-1)*2-(n-1);
 
   double *rS = new double[n];
-  double *printVal = new double[2*m];
+  double *printVal = new double[m];
   int idx=0;
 
   double stretch=0;
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 
   rS[0]=0;
   for(int i=0; i < n-1; ++i) {
-    rS[i+1]=rS[i]+1;
+    rS[i+1]=rS[i]+rand()%1000+1;
   }
     
     
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
     for(int j=0; j <= width-2; ++j) {
       if(abs(a[j][i]-a[j+1][i])!=1) {
         double r=abs(rS[a[j][i]]-rS[a[j+1][i]]); 
-        while(double(rand())/double(RAND_MAX) < 0.5) {
+        while (double(rand())/double(RAND_MAX) < 0.5) {
           r/=2;
         }
         stretch+=abs(rS[a[j][i]]-rS[a[j+1][i]])/r;
@@ -102,9 +102,10 @@ int main(int argc, char *argv[])
 
 
   for (int i=0; i < n-1; ++i) {
-    std::cout << i+1 << ' ' << i+2 << ' ' << -1 << std::endl;
-    diag[i]+=1;
-    diag[i+1]+=1;
+    double roundr=round(pow(10.,precdigits)/(rS[i+1]-rS[i]))/pow(10.,precdigits);
+    std::cout << i+1 << ' ' << i+2 << ' ' << -roundr << std::endl;
+    diag[i]+=roundr;
+    diag[i+1]+=roundr;
   }
   
   idx=0;
@@ -128,7 +129,7 @@ int main(int argc, char *argv[])
   }
   
 
-  for(int i=0; i <= n-1; ++i) {
+  for(int i=0; i < n; ++i) {
     std::cout << i+1 << ' ' << i+1 << ' ' << std::setprecision(precdigits+1) << diag[i] << std::endl;
   }
   
