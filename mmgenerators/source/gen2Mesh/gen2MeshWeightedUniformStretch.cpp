@@ -4,17 +4,21 @@
 
 int main(int argc, char *argv[])
 {
-  if (argc < 2) {
+  if(argc < 2) {
     std::cerr << "Please specify n." << std::endl;
     return -1;
   }
 
-  size_t n = atol(argv[1]);	
+  size_t n=atol(argv[1]);	
     
   int width=int(sqrt(n));
   n=width*width;
 
   size_t precdigits=6;
+
+  if(argc == 3) {
+    precdigits=atol(argv[2]);
+  }
 
   double *diag = new double[n];
   for(int i=0; i < n; ++i) {
@@ -65,6 +69,10 @@ int main(int argc, char *argv[])
   
   for(int i=0; i < n-1; i++) {
     double roundr=round(pow(10.,precdigits)/(rS[i+1]-rS[i]))/pow(10.,precdigits);
+    if(roundr == 0) {
+      std::cerr << "increase precision because edge weights too small" << std::endl;
+      return -1;
+    }
     std::cout << i+1 << ' ' << i+2 << ' ' << -roundr << std::endl;
     diag[i]+=roundr;
     diag[i+1]+=roundr;
@@ -77,6 +85,10 @@ int main(int argc, char *argv[])
         {
           double r=abs(rS[a[i][j]]-rS[a[i][j+1]]); 
           double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+          if(roundr == 0) {
+            std::cerr << "increase precision because edge weights too small" << std::endl;
+            return -1;
+          }
           std::cout << a[i][j]+1 << ' ' << a[i][j+1]+1 << ' ' << -roundr << std::endl;
           diag[a[i][j]]+=roundr;
           diag[a[i][j+1]]+=roundr;
@@ -89,6 +101,10 @@ int main(int argc, char *argv[])
         {
           double r=abs(rS[a[j][i]]-rS[a[j+1][i]]); 
           double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+          if(roundr == 0) {
+            std::cerr << "increase precision because edge weights too small" << std::endl;
+            return -1;
+          }
           std::cout << a[j][i]+1 << ' ' << a[j+1][i]+1 << ' ' << -roundr << std::endl;
           diag[a[j][i]]+=roundr;
           diag[a[j+1][i]]+=roundr;

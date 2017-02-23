@@ -24,18 +24,18 @@ int main(int argc, char *argv[]) {
     diag[i]=0;
   }
 
-  printf("%%%%MatrixMarket matrix coordinate real symmetric\n%%\n");
-  std::cout << n << ' ' << n  << ' ' << m+n-1+n << std::endl;
+  double *printVal = new double[m];
+  int idx=0;
 
+  
   rS[0]=0;
   for(int i=0; i < n-1; ++i) {
-    std::cout << i+1 << ' ' << i+2 << ' ' << -1 << std::endl;
-    diag[i]+=1;
-    diag[i+1]+=1;
     rS[i+1]=rS[i]+1;
   }
 
   has.clear();
+
+  double stretch=0;
 
   for(int i=0; i < m; ++i) {
     int u=rand()%n;
@@ -54,29 +54,64 @@ int main(int argc, char *argv[]) {
     }
 
     has.insert(std::make_pair(u, v));
+  }
+
+  std::set<std::pair<int,int> >::iterator iter;
+  for(iter=has.begin(); iter != has.end(); ++iter) {
+    int u=(*iter).first;
+    int v=(*iter).second;
 
     double r=rS[v]-rS[u];
+    double newr=r;
+
     while (double(rand())/double(RAND_MAX) < 0.5) {
-      r/=2;
+      if(newr/2+r-1 < 2*r/newr) {
+        break;
+      }
+      newr/=2;
     }
-    double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+    stretch+=(r/newr);
+    if((newr+r-1) < r/newr) {
+      std::cerr << "low stretch tree no longer path" << std::endl;
+      return -1;
+    }
+    double roundr=round(pow(10.,precdigits)/newr)/pow(10.,precdigits);
     if(roundr == 0) {
       std::cerr << "increase precision because edge weights too small" << std::endl;
       return -1;
     }
-    std::cout << u+1 << ' ' << v+1 << ' ' << -roundr << std::endl;
-
+    printVal[idx]=-roundr;
+    idx++;
     diag[u]+=roundr;
     diag[v]+=roundr;
   }
 
+  printf("%%%%MatrixMarket matrix coordinate real symmetric\n%%\n%%Total Stretch %f\n", stretch);
+  std::cout << n << ' ' << n  << ' ' << m+n-1+n << std::endl;
 
+  
+  for(int i=0; i < n-1; ++i) {
+    std::cout << i+1 << ' ' << i+2 << ' ' << -1 << std::endl;
+    
+    diag[i]+=1;
+    diag[i+1]+=1;
+  }
+
+
+  idx=0;
+  for(iter=has.begin(); iter != has.end(); ++iter) {
+    std::cout << (*iter).first+1 << ' ' << (*iter).second+1 << ' ' << printVal[idx] << std::endl;
+    idx++;
+  }
+  
   for(int i=0; i < n; ++i) {
     std::cout << i+1 << ' ' << i+1 << ' ' << std::setprecision(precdigits+1) << diag[i] << std::endl;
   }
 
   delete diag;
   delete rS;
+  
+  delete printVal;
 
   return 0;
 }

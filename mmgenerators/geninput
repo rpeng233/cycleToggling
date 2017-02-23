@@ -1,21 +1,29 @@
 #!/bin/bash
+mkdir -p data
+mkdir -p data/genChain
+mkdir -p data/gen2Mesh
+mkdir -p data/gen3Mesh
+mkdir -p data/genFixedLength
+mkdir -p data/genRandom
+
 size=1e5
 value=$(printf '%.0f' $size)
-exec/genChainUniformStretch $value > data/genChainUniformStretch${size}.mtx
-exec/genChainExpStretch $value > data/genChainExpStretch${size}.mtx
-exec/gen2MeshUnweightedUniformStretch $value > data/gen2MeshUnweightedUniformStretch${size}.mtx
-exec/gen2MeshUnweightedExpStretch $value > data/gen2MeshUnweightedExpStretch${size}.mtx
-exec/gen2MeshWeightedUniformStretch $value > data/gen2MeshWeightedUniformStretch${size}.mtx
-exec/gen2MeshWeightedExpStretch $value > data/gen2MeshWeightedExpStretch${size}.mtx
-exec/gen3MeshUnweightedUniformStretch $value > data/gen3MeshUnweightedUniformStretch${size}.mtx
-exec/gen3MeshUnweightedExpStretch $value > data/gen3MeshUnweightedExpStretch${size}.mtx
-exec/gen3MeshWeightedUniformStretch $value > data/gen3MeshWeightedUniformStretch${size}.mtx
-exec/gen3MeshWeightedExpStretch $value > data/gen3MeshWeightedExpStretch${size}.mtx
-exec/genFixedLengthUnweightedUniformStretch $value 100 1 > data/genFixedLengthUnweightedUniformStretch${size}.mtx
-exec/genFixedLengthUnweightedExpStretch $value 100 1 > data/genFixedLengthUnweightedExpStretch${size}.mtx
-exec/genFixedLengthWeightedUniformStretch $value 100 1 > data/genFixedLengthWeightedUniformStretch${size}.mtx
-exec/genFixedLengthWeightedExpStretch $value 100 1 > data/genFixedLengthWeightedExpStretch${size}.mtx
-exec/genRandomWeightedUniformStretch $value $((2*$value)) 9 > data/genRandomWeightedUniformStretch${size}.mtx
-exec/genRandomWeightedExpStretch $value $((2*$value)) 9 > data/genRandomWeightedExpStretch${size}.mtx
-exec/genRandomUnweightedUniformStretch $value $((2*$value)) > data/genRandomUnweightedUniformStretch${size}.mtx
-exec/genRandomUnweightedExpStretch $value $((2*$value)) > data/genRandomUnweightedExpStretch${size}.mtx
+exec/genChain/genChainUniformStretch $value > data/genChain/genChainUniformStretch${size}.mtx
+exec/genChain/genChainExpStretch $value > data/genChain/genChainExpStretch${size}.mtx
+exec/gen2Mesh/gen2MeshUnweightedUniformStretch $value > data/gen2Mesh/gen2MeshUnweightedUniformStretch${size}.mtx
+exec/gen2Mesh/gen2MeshUnweightedExpStretch $value 9 > data/gen2Mesh/gen2MeshUnweightedExpStretch${size}.mtx
+exec/gen2Mesh/gen2MeshWeightedUniformStretch $value 9 > data/gen2Mesh/gen2MeshWeightedUniformStretch${size}.mtx
+exec/gen2Mesh/gen2MeshWeightedExpStretch $value 9 > data/gen2Mesh/gen2MeshWeightedExpStretch${size}.mtx
+exec/gen3Mesh/gen3MeshUnweightedUniformStretch $value > data/gen3Mesh/gen3MeshUnweightedUniformStretch${size}.mtx
+exec/gen3Mesh/gen3MeshUnweightedExpStretch $value 9 > data/gen3Mesh/gen3MeshUnweightedExpStretch${size}.mtx
+exec/gen3Mesh/gen3MeshWeightedUniformStretch $value 9 > data/gen3Mesh/gen3MeshWeightedUniformStretch${size}.mtx
+exec/gen3Mesh/gen3MeshWeightedExpStretch $value 9 > data/gen3Mesh/gen3MeshWeightedExpStretch${size}.mtx
+exec/gen3Mesh/gen3MeshAdjWeightedExpStretch $value 9 > data/gen3Mesh/gen3MeshAdjWeightedExpStretch${size}.mtx
+exec/genFixedLength/genFixedLengthUnweightedUniformStretch $value 100 1 > data/genFixedLength/genFixedLengthUnweightedUniformStretch${size}.mtx
+exec/genFixedLength/genFixedLengthUnweightedExpStretch $value 100 1 > data/genFixedLength/genFixedLengthUnweightedExpStretch${size}.mtx
+exec/genFixedLength/genFixedLengthWeightedUniformStretch $value 100 1 > data/genFixedLength/genFixedLengthWeightedUniformStretch${size}.mtx
+exec/genFixedLength/genFixedLengthWeightedExpStretch $value 100 1 8 > data/genFixedLength/genFixedLengthWeightedExpStretch${size}.mtx
+exec/genRandom/genRandomWeightedUniformStretch $value $(($value)) 9 > data/genRandom/genRandomWeightedUniformStretch${size}.mtx
+exec/genRandom/genRandomWeightedExpStretch $value $(($value)) 9 > data/genRandom/genRandomWeightedExpStretch${size}.mtx
+exec/genRandom/genRandomUnweightedUniformStretch $value $(($value)) > data/genRandom/genRandomUnweightedUniformStretch${size}.mtx
+exec/genRandom/genRandomUnweightedExpStretch $value $(($value)) > data/genRandom/genRandomUnweightedExpStretch${size}.mtx

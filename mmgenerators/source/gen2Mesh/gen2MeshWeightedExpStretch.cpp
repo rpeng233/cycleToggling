@@ -16,6 +16,10 @@ int main(int argc, char *argv[])
 
   size_t precdigits=6;
 
+  if(argc == 3) {
+    precdigits=atol(argv[2]);
+  }
+
   double *diag = new double[n];
   for(int i=0; i < n; ++i) {
     diag[i]=0;
@@ -67,11 +71,40 @@ int main(int argc, char *argv[])
     for(int j=0; j <= width-2; ++j) {
       if(abs(a[i][j]-a[i][j+1])!=1) {
         double r=abs(rS[a[i][j]]-rS[a[i][j+1]]);
-        while(double(rand())/double(RAND_MAX) < 0.5) {
-          r/=2;
+        double newr=r;
+        double maxr=0;
+        int dist=a[i][j]-a[i][j+1];
+        int start;
+        if(dist < 0) {
+          start=a[i][j];
         }
-        stretch+=abs(rS[a[i][j]]-rS[a[i][j+1]])/r;
-        double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+        else {
+          start=a[i][j+1];
+        }
+        for(int l=0; l < abs(dist); ++l) {
+          double tempr=abs(rS[start+l+1]-rS[start+l]);
+          if(tempr > maxr) {
+            maxr=tempr;
+          }
+        }
+        while(double(rand())/double(RAND_MAX) < 0.5) {
+          if((newr/2+r-maxr)/maxr < 2*r/newr) {
+            break;
+          }
+
+          newr/=2;
+        }
+        stretch+=(r/newr);
+        if((newr+r-maxr)/maxr < (r/newr)) {
+          std::cerr << "low stretch tree no longer path" << std::endl;
+          return -1;
+        }
+       
+        double roundr=round(pow(10.,precdigits)/newr)/pow(10.,precdigits);
+        if(roundr == 0) {
+          std::cerr << "increase precision because edge weights too small" << std::endl;
+          return -1;
+        }
         printVal[idx]=-roundr;
         diag[a[i][j]]+=roundr;
         diag[a[i][j+1]]+=roundr;
@@ -83,12 +116,42 @@ int main(int argc, char *argv[])
   for(int i=0; i <= width-1; ++i) {
     for(int j=0; j <= width-2; ++j) {
       if(abs(a[j][i]-a[j+1][i])!=1) {
-        double r=abs(rS[a[j][i]]-rS[a[j+1][i]]); 
-        while (double(rand())/double(RAND_MAX) < 0.5) {
-          r/=2;
+        double r=abs(rS[a[j][i]]-rS[a[j+1][i]]);
+        double newr=r;
+        double maxr=0;
+        int dist=a[j][i]-a[j+1][i];
+        int start;
+        if(dist < 0) {
+          start=a[j][i];
         }
-        stretch+=abs(rS[a[j][i]]-rS[a[j+1][i]])/r;
-        double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+        else {
+          start=a[j+1][i];
+        }
+        for(int l=0; l < abs(dist); ++l) {
+          double tempr=abs(rS[start+l+1]-rS[start+l]);
+          if(tempr > maxr) {
+            maxr=tempr;
+          }
+        }
+
+        while (double(rand())/double(RAND_MAX) < 0.5) {
+          if((newr/2+r-maxr)/maxr < 2*r/newr) {
+            break;
+          }
+          
+          newr/=2;
+        }
+        stretch+=(r/newr);
+        if((newr+r-maxr)/maxr < r/newr) {
+          std::cerr << "low stretch tree no longer path" << std::endl;
+          return -1;
+        }
+        
+        double roundr=round(pow(10.,precdigits)/newr)/pow(10.,precdigits);
+        if(roundr == 0) {
+          std::cerr << "increase precision because edge weights too small" << std::endl;
+          return -1;
+        }
         printVal[idx]=-roundr;
         diag[a[j][i]]+=roundr;
         diag[a[j+1][i]]+=roundr;

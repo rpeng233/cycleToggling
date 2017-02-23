@@ -1,6 +1,32 @@
 #!/bin/bash
-mkdir exec
-for file in genChainExpStretch gen2MeshWeightedExpStretch genChainUniformStretch gen2MeshWeightedUniformStretch genFixedLengthUnweightedExpStretch genFixedLengthWeightedExpStretch gen2MeshUnweightedExpStretch genFixedLengthWeightedUniformStretch genFixedLengthUnweightedUniformStretch gen2MeshUnweightedUniformStretch genRandomWeightedExpStretch genRandomUnweightedExpStretch gen3MeshUnweightedExpStretch genRandomUnweightedUniformStretch genRandomWeightedUniformStretch gen3MeshUnweightedUniformStretch gen3MeshWeightedExpStretch gen3MeshWeightedUniformStretch
+mkdir -p exec
+mkdir -p exec/genChain
+mkdir -p exec/gen3Mesh
+mkdir -p exec/gen2Mesh
+mkdir -p exec/genRandom
+mkdir -p exec/genFixedLength
+
+for file in genChainExpStretch genChainUniformStretch 
 do
-	g++ source/$file.cpp -o exec/$file -O3 --std=c++11
+    g++ source/genChain/$file.cpp -o exec/genChain/$file -O3 --std=c++11
+done
+
+for file in gen3MeshUnweightedUniformStretch gen3MeshWeightedExpStretch gen3MeshWeightedUniformStretch gen3MeshUnweightedExpStretch gen3MeshAdjWeightedExpStretch
+do
+    g++ source/gen3Mesh/$file.cpp -o exec/gen3Mesh/$file -O3 --std=c++11
+done
+
+for file in gen2MeshWeightedExpStretch gen2MeshWeightedUniformStretch gen2MeshUnweightedExpStretch gen2MeshUnweightedUniformStretch
+do
+    g++ source/gen2Mesh/$file.cpp -o exec/gen2Mesh/$file -O3 --std=c++11
+done
+
+for file in genFixedLengthUnweightedExpStretch genFixedLengthWeightedExpStretch  genFixedLengthWeightedUniformStretch genFixedLengthUnweightedUniformStretch
+do
+    g++ source/genFixedLength/$file.cpp -o exec/genFixedLength/$file -O3 --std=c++11
+done
+
+for file in genRandomWeightedExpStretch genRandomUnweightedExpStretch genRandomUnweightedUniformStretch genRandomWeightedUniformStretch
+do
+    g++ source/genRandom/$file.cpp -o exec/genRandom/$file -O3 --std=c++11
 done

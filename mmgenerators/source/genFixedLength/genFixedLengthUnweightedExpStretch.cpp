@@ -48,11 +48,23 @@ int main(int argc, char *argv[]) {
     int u=i;
     int v=i+hop;
     double r=rS[v]-rS[u];
+    double newr=r;
     while(double(rand())/double(RAND_MAX) < 0.5) {
-      r/=2;
+      if(newr/2+r-1 < 2*r/newr) {
+        break;
+      }
+      newr/=2;
     }
-    stretch+=(rS[v]-rS[u])/r;
-    double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+    stretch+=(r/newr);
+    if((newr+r-1) < r/newr) {
+      std::cerr << "low stretch tree no longer path" << std::endl;
+      return -1;
+    }
+    double roundr=round(pow(10.,precdigits)/newr)/pow(10.,precdigits);
+    if(roundr == 0) {
+      std::cerr << "increase precision because edge weights too small" << std::endl;
+      return -1;
+    }
     printVal[idx]=-roundr;
     diag[u]+=roundr;
     diag[v]+=roundr;

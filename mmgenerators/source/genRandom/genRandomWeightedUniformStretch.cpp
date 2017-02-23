@@ -24,18 +24,24 @@ int main(int argc, char *argv[]) {
     diag[i]=0;
   }
 
-  double *printVal = new double[m];
-  int idx=0;
+  printf("%%%%MatrixMarket matrix coordinate real symmetric\n%%\n%%Total Stretch %d\n", (int)m);
+  std::cout << n << ' ' << n  << ' ' << m+n-1+n << std::endl;
 
-  
   rS[0]=0;
   for(int i=0; i < n-1; ++i) {
-    rS[i+1]=rS[i]+rand()%1000+1;
+    double r=rand()%1000+1;
+    double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+    if(roundr == 0) {
+      std::cerr << "increase precision because edge weights too small" << std::endl;
+      return -1;
+    }
+    std::cout << i+1 << ' ' << i+2 << ' ' << -roundr << std::endl;
+    diag[i]+=roundr;
+    diag[i+1]+=roundr;
+    rS[i+1]=rS[i]+r;
   }
 
   has.clear();
-
-  double stretch=0;
 
   for(int i=0; i < m; ++i) {
     int u=rand()%n;
@@ -55,50 +61,25 @@ int main(int argc, char *argv[]) {
 
     has.insert(std::make_pair(u, v));
 
-    double r=rS[v]-rS[u];
-    while (double(rand())/double(RAND_MAX) < 0.5) {
-      r/=2;
-    }
-    stretch+=(rS[v]-rS[u])/r;
-    double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
-    if(roundf == 0) {
+   
+    double roundr=round(pow(10.,precdigits)/(rS[v]-rS[u]))/pow(10.,precdigits);
+    if(roundr == 0) {
       std::cerr << "increase precision because edge weights too small" << std::endl;
       return -1;
     }
-    printVal[idx]=-roundr;
-    idx++;
+    std::cout << u+1 << ' ' << v+1 << ' ' << -roundr << std::endl;
 
     diag[u]+=roundr;
     diag[v]+=roundr;
   }
 
-  printf("%%%%MatrixMarket matrix coordinate real symmetric\n%%\n%%Total Stretch %f\n", stretch);
-  std::cout << n << ' ' << n  << ' ' << m+n-1+n << std::endl;
 
-  
-  for(int i=0; i < n-1; ++i) {
-    double roundr=round(pow(10.,precdigits)/rS[i])/pow(10.,precdigits);
-    std::cout << i+1 << ' ' << i+2 << ' ' << -roundr << std::endl;
-    diag[i]+=roundr;
-    diag[i+1]+=roundr;
-  }
-
-
-  idx=0;
-  std::set<std::pair<int,int> >::iterator iter;
-  for(iter=has.begin(); iter != has.end(); ++iter) {
-    std::cout << (*iter).first+1 << ' ' << (*iter).second+1 << ' ' << printVal[idx] << std::endl;
-    idx++;
-  }
-  
   for(int i=0; i < n; ++i) {
     std::cout << i+1 << ' ' << i+1 << ' ' << std::setprecision(precdigits+1) << diag[i] << std::endl;
   }
 
   delete diag;
   delete rS;
-  
-  delete printVal;
 
   return 0;
 }

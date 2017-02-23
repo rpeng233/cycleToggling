@@ -46,6 +46,10 @@ int main(int argc, char *argv[]) {
     int u=i;
     int v=i+hop;     
     double roundr=round(pow(10.,precdigits)/(rS[v]-rS[u]))/pow(10.,precdigits);
+    if(roundr == 0) {
+      std::cerr << "increase precision because edge weights too small" << std::endl;
+      return -1;
+    }
     std::cout << u+1 << ' ' << v+1 << ' ' << -roundr << std::endl;
     diag[u]+=roundr;
     diag[v]+=roundr;

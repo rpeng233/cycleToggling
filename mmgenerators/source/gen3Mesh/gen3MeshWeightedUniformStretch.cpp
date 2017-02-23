@@ -9,12 +9,16 @@ int main(int argc, char *argv[])
     return -1;
   }
   
-  size_t n = atol(argv[1]);
+  size_t n=atol(argv[1]);
   
   int width=int(pow(n,1.0/3.0));
   n=width*width*width;
 
   size_t precdigits=6;
+
+  if(argc == 3) {
+    precdigits=atol(argv[2]);
+  }
 
   int*** a = new int**[width];
   for(int i=0; i < width; ++i) {
@@ -79,7 +83,11 @@ int main(int argc, char *argv[])
   }
 
   for (int i=0; i < n-1; ++i) {
-    double roundr = round(pow(10.,precdigits)/(rS[i+1]-rS[i]))/pow(10.,precdigits);
+    double roundr=round(pow(10.,precdigits)/(rS[i+1]-rS[i]))/pow(10.,precdigits);
+    if(roundr == 0) {
+      std::cerr << "increase precision because edge weights too small" << std::endl;
+      return -1;
+    }
     std::cout << i+1 << ' ' << i+2 << ' ' << -roundr << std::endl;
     diag[i]+=roundr;
     diag[i+1]+=roundr;
@@ -91,6 +99,10 @@ int main(int argc, char *argv[])
         if(abs(a[i][j][k]-a[i][j][k+1])!=1) {
           double r=abs(rS[a[i][j][k]]-rS[a[i][j][k+1]]);
           double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+          if(roundr == 0) {
+            std::cerr << "increase precision because edge weights too small" << std::endl;
+            return -1;
+          }
           std::cout << a[i][j][k]+1 << ' ' << a[i][j][k+1]+1 << ' ' << -roundr << std::endl;
           diag[a[i][j][k]]+=roundr;
           diag[a[i][j][k+1]]+=roundr;
@@ -98,6 +110,10 @@ int main(int argc, char *argv[])
         if(abs(a[i][k][j]-a[i][k+1][j])!=1) {
           double r=abs(rS[a[i][k][j]]-rS[a[i][k+1][j]]); 
           double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+          if(roundr == 0) {
+            std::cerr << "increase precision because edge weights too small" << std::endl;
+            return -1;
+          }
           std::cout << a[i][k][j]+1 << ' ' << a[i][k+1][j]+1 << ' ' << -roundr << std::endl;
           diag[a[i][k][j]]+=roundr;
           diag[a[i][k+1][j]]+=roundr;
@@ -105,6 +121,10 @@ int main(int argc, char *argv[])
         if(abs(a[k][i][j]-a[k+1][i][j])!=1) {
           double r=abs(rS[a[k][i][j]]-rS[a[k+1][i][j]]);
           double roundr=round(pow(10.,precdigits)/r)/pow(10.,precdigits);
+          if(roundr == 0) {
+            std::cerr << "increase precision because edge weights too small" << std::endl;
+            return -1;
+          }
           std::cout << a[k][i][j]+1 << ' ' << a[k+1][i][j]+1 << ' ' << -roundr << std::endl;
           diag[a[k][i][j]]+=roundr;
           diag[a[k+1][i][j]]+=roundr;
