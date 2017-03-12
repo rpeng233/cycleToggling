@@ -8,46 +8,74 @@ fi
 size=$1
 rhs=$2
 mkdir -p results_${size}_${rhs}
-for file in genChainExpStretch gen2MeshExpStretch genChainUniformStretch gen2MeshUniformStretch genFixedLengthExpStretch gen2MeshUnweightedExpStretch genFixedLengthUniformStretch gen2MeshUnweightedUniformStretch genRandomExpStretch gen3MeshUnweightedExpStretch genRandomUniformStretch gen3MeshUnweightedUniformStretch gen3MeshWeightedExpStretch gen3MeshWeightedUniformStretch
+
+for structuretype in gen2Mesh gen3Mesh genRandom genFixedLength genSegments
 do
-	rm -rf results_${size}_${rhs}/$file.csv
-	rm -rf results_${size}_${rhs}/$file.log
-	echo $file
-	echo 'linesolver'
-        echo results_${size}_${rhs}/$file.csv
-        echo graphdata/${file}${size}.txt
-        echo graphdata/${file}_${rhs}_rhs.mtx
+    for weighttype in UnweightedUniformStretch WeightedUniformStretch UnweightedExpStretch WeightedExpStretch
+    do
+        rm -rf results_${size}_${rhs}/${structuretype}${weighttype}.csv
+        rm -rf results_${size}_${rhs}/${structuretype}${weighttype}.csv
+        echo results_${size}_${rhs}/${structuretype}${weighttype}.csv
+        echo graphdata/${structuretype}/${structuretype}${weighttype}${size}.txt
+        echo graphdata/genRhs/${structuretype}${size}_${rhs}_rhs.mtx
+        echo 'linesolver'
 	for ((i=0; i<10; i++))
 	do
-		echo 'linesolver' >> results_${size}_${rhs}/$file.log
-		./exec/linesolver graphdata/${file}${size}.txt graphdata/${file}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/$file.csv 2>> results_${size}_${rhs}/$file.log
+	    echo 'linesolver' >> results_${size}_${rhs}/${structuretype}${weighttype}.log
+	    ./exec/solvers/linesolver graphdata/${structuretype}/${structuretype}${weighttype}${size}.txt graphdata/genRhs/${structuretype}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/${structuretype}${weighttype}.csv 2>> results_${size}_${rhs}/${structuretype}${weighttype}.log
 	done
 	echo 'treesolver'
 	for ((i=0; i<10; i++))
 	do
-		echo 'treesolver' >> results_${size}_${rhs}/$file.log
-		./exec/treesolver graphdata/${file}${size}.txt graphdata/${file}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/$file.csv 2>> results_${size}_${rhs}/$file.log
+	    echo 'treesolver' >> results_${size}_${rhs}/${structuretype}${weighttype}.log
+	    ./exec/solvers/treesolver graphdata/${structuretype}/${structuretype}${weighttype}${size}.txt graphdata/genRhs/${structuretype}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/${structuretype}${weighttype}.csv 2>> results_${size}_${rhs}/${structuretype}${weighttype}.log
+	done
+        
+        echo 'cgsolver'
+	for ((i=0; i<10; i++))
+	do
+	    ./exec/solvers/cgsolver graphdata/${structuretype}/${structuretype}${weighttype}${size}.txt graphdata/genRhs/${structuretype}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/${structuretype}${weighttype}.csv 2>> results_${size}_${rhs}/${structuretype}${weighttype}.log
 	done
 
-	#echo 'cgsolver'
-	#for ((i=0; i<10; i++))
-	#do
-	#	./cgsolver $file.txt ${file}_rhs.mtx >> results/$file.csv
-	#done
 
-	echo $file
         echo 'recursivelinesolver'
         for ((i=0; i<10; i++))
         do
-		echo 'recursivelinesolver' >> results_${size}_${rhs}/$file.log
-                ./exec/recursiveLineSolverFixed graphdata/${file}${size}.txt graphdata/${file}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/$file.csv 2>> results_${size}_${rhs}/$file.log
+	    echo 'recursivelinesolver' >> results_${size}_${rhs}/${structuretype}${weighttype}.log
+            ./exec/solvers/recursiveLineSolverFixed graphdata/${structuretype}/${structuretype}${weighttype}${size}.txt graphdata/genRhs/${structuretype}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/${structuretype}${weighttype}.csv 2>> results_${size}_${rhs}/${structuretype}${weighttype}.log
         done
 
         echo 'recursivetreesolver'
         for ((i=0; i<10; i++))
         do
-		echo 'recursivetreesolver' >> results_${size}_${rhs}/$file.log
-                ./exec/recursiveTreeSolver graphdata/${file}${size}.txt graphdata/${file}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/$file.csv 2>> results_${size}_${rhs}/$file.log
+	    echo 'recursivetreesolver' >> results_${size}_${rhs}/$file.log
+            ./exec/solvers/recursiveTreeSolver graphdata/${structuretype}/${structuretype}${weighttype}${size}.txt graphdata/genRhs/${structuretype}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/${structuretype}${weighttype}.csv 2>> results_${size}_${rhs}/${structuretype}${weighttype}.log
         done
 
+
+    done
 done
+
+#for file in genChainExpStretch gen2MeshExpStretch genChainUniformStretch gen2MeshUniformStretch genFixedLengthExpStretch gen2MeshUnweightedExpStretch genFixedLengthUniformStretch gen2MeshUnweightedUniformStretch genRandomExpStretch gen3MeshUnweightedExpStretch genRandomUniformStretch gen3MeshUnweightedUniformStretch gen3MeshWeightedExpStretch gen3MeshWeightedUniformStretch
+#do
+#	rm -rf results_${size}_${rhs}/$file.csv
+#	rm -rf results_${size}_${rhs}/$file.log
+#	echo $file
+#	echo 'linesolver'
+ #       echo results_${size}_${rhs}/$file.csv
+  #      echo graphdata/${file}${size}.txt
+   #     echo graphdata/${file}_${rhs}_rhs.mtx
+#	for ((i=0; i<10; i++))
+#	do
+#		echo 'linesolver' >> results_${size}_${rhs}/$file.log
+#		./exec/linesolver graphdata/${file}${size}.txt graphdata/${file}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/$file.csv 2>> results_${size}_${rhs}/$file.log
+#	done
+#	echo 'treesolver'
+#	for ((i=0; i<10; i++))
+#	do
+#		echo 'treesolver' >> results_${size}_${rhs}/$file.log
+#		./exec/treesolver graphdata/${file}${size}.txt graphdata/${file}${size}_${rhs}_rhs.mtx >> results_${size}_${rhs}/$file.csv 2>> results_${size}_${rhs}/$file.log
+#	done
+
+	
+#done

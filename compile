@@ -1,6 +1,40 @@
 #!/bin/bash
 mkdir -p exec
-for file in cgsolver cgsolver2 genChainExpStretch gen2MeshExpStretch genChainUniformStretch gen2MeshUniformStretch genFixedLengthExpStretch gen2MeshUnweightedExpStretch genFixedLengthUniformStretch gen2MeshUnweightedUniformStretch genRandomExpStretch gen3MeshUnweightedExpStretch genRandomUniformStretch gen3MeshUnweightedUniformStretch genRandRhs gen3MeshWeightedExpStretch linesolver gen3MeshWeightedUniformStretch treesolver recursiveLineSolverFixed recursiveTreeSolver gen01Rhs graphsp2mm
+mkdir -p exec/gen2Mesh
+mkdir -p exec/gen3Mesh
+mkdir -p exec/genRandom
+mkdir -p exec/genFixedLength
+mkdir -p exec/genSegments
+mkdir -p exec/genSegmentsSab
+mkdir -p exec/genChain
+mkdir -p exec/genRhs
+mkdir -p exec/solvers
+mkdir -p exec/util
+
+for file in UnweightedUniformStretch UnweightedExpStretch WeightedUniformStretch WeightedExpStretch
 do
-	./go $file -O3
+    ./go gen2Mesh/gen2Mesh${file} -O3
+    ./go gen3Mesh/gen3Mesh${file} -O3
+    ./go genRandom/genRandom${file} -O3
+    ./go genFixedLength/genFixedLength${file} -O3
+    ./go genSegments/genSegments${file} -O3
+    ./go genSegmentsSab/genSegmentsSab${file} -O3
+    ./go genChain/genChain${file} -O3
 done
+
+
+for file in cgsolver cgsolver2 treesolver linesolver recursiveLineSolverFixed recursiveTreeSolver
+do
+    ./go solvers/${file} -O3
+done
+
+for file in gen01Rhs genRandRhs
+do
+    ./go genRhs/${file} -O3
+done
+
+for file in graphsp2mm stretch
+do
+    ./go util/${file} -O3
+done
+

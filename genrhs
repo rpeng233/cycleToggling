@@ -1,8 +1,20 @@
 #!/bin/bash
 size=$1
-for file in genChainExpStretch gen2MeshExpStretch genChainUniformStretch gen2MeshUniformStretch genFixedLengthExpStretch gen2MeshUnweightedExpStretch genFixedLengthUniformStretch gen2MeshUnweightedUniformStretch genRandomExpStretch gen3MeshUnweightedExpStretch genRandomUniformStretch gen3MeshUnweightedUniformStretch gen3MeshWeightedExpStretch gen3MeshWeightedUniformStretch
-do
-	echo graphdata/${file}${size}.txt
-	exec/gen01Rhs graphdata/${file}${size}.txt
-        exec/genRandRhs graphdata/${file}${size}.txt
-done
+mkdir -p graphdata/genRhs
+exec/genRhs/gen01Rhs graphdata/gen2Mesh/gen2MeshUnweightedUniformStretch${size}.txt graphdata/genRhs/gen2Mesh${size}_01_rhs.mtx
+exec/genRhs/genRandRhs graphdata/gen2Mesh/gen2MeshUnweightedUniformStretch${size}.txt graphdata/genRhs/gen2Mesh${size}_Rand_rhs.mtx
+
+exec/genRhs/gen01Rhs graphdata/gen3Mesh/gen3MeshUnweightedUniformStretch${size}.txt graphdata/genRhs/gen3Mesh${size}_01_rhs.mtx
+exec/genRhs/genRandRhs graphdata/gen3Mesh/gen3MeshUnweightedUniformStretch${size}.txt graphdata/genRhs/gen3Mesh${size}_Rand_rhs.mtx
+
+exec/genRhs/gen01Rhs graphdata/genFixedLength/genFixedLengthUnweightedUniformStretch${size}.txt graphdata/genRhs/genFixedLength${size}_01_rhs.mtx
+exec/genRhs/genRandRhs graphdata/genFixedLength/genFixedLengthUnweightedUniformStretch${size}.txt graphdata/genRhs/genFixedLength${size}_Rand_rhs.mtx
+
+exec/genRhs/gen01Rhs graphdata/genRandom/genRandomUnweightedUniformStretch${size}.txt graphdata/genRhs/genRandom${size}_01_rhs.mtx
+exec/genRhs/genRandRhs graphdata/genRandom/genRandomUnweightedUniformStretch${size}.txt graphdata/genRhs/genRandom${size}_Rand_rhs.mtx
+
+exec/genRhs/gen01Rhs graphdata/genSegments/genSegmentsUnweightedUniformStretch${size}.txt graphdata/genRhs/genSegments${size}_01_rhs.mtx
+exec/genRhs/genRandRhs graphdata/genSegments/genSegmentsUnweightedUniformStretch${size}.txt graphdata/genRhs/genSegments${size}_Rand_rhs.mtx
+
+exec/genRhs/gen01Rhs graphdata/genChain/genChainUnweightedUniformStretch${size}.txt graphdata/genRhs/genChain${size}_01_rhs.mtx
+exec/genRhs/genRandRhs graphdata/genChain/genChainUnweightedUniformStretch${size}.txt graphdata/genRhs/genChain${size}_Rand_rhs.mtx

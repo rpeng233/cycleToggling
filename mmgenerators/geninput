@@ -5,6 +5,7 @@ mkdir -p data/gen2Mesh
 mkdir -p data/gen3Mesh
 mkdir -p data/genFixedLength
 mkdir -p data/genRandom
+mkdir -p data/genSegments
 
 size=1e5
 value=$(printf '%.0f' $size)
@@ -27,3 +28,9 @@ exec/genRandom/genRandomWeightedUniformStretch $value $(($value)) 9 > data/genRa
 exec/genRandom/genRandomWeightedExpStretch $value $(($value)) 9 > data/genRandom/genRandomWeightedExpStretch${size}.mtx
 exec/genRandom/genRandomUnweightedUniformStretch $value $(($value)) > data/genRandom/genRandomUnweightedUniformStretch${size}.mtx
 exec/genRandom/genRandomUnweightedExpStretch $value $(($value)) > data/genRandom/genRandomUnweightedExpStretch${size}.mtx
+
+
+exec/genSegments/genSegmentsUnweightedUniformStretch $value $(($value)) 10 > data/genSegments/genSegmentsUnweightedUniformStretch${size}.mtx
+exec/genSegments/genSegmentsWeightedUniformStretch $value $(($value)) 10 9 > data/genSegments/genSegmentsWeightedUniformStretch${size}.mtx
+exec/genSegments/genSegmentsUnweightedExpStretch $value $(($value)) 10 9 > data/genSegments/genSegmentsUnweightedExpStretch${size}.mtx
+exec/genSegments/genSegmentsWeightedExpStretch $value $(($value)) 10 9 > data/genSegments/genSegmentsWeightedExpStretch${size}.mtx

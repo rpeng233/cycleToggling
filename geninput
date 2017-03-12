@@ -1,30 +1,65 @@
 #!/bin/bash
 
-if [[ $# -lt 2 ]]; then
-	echo "Usage: ./geninput graphSize hopCount"
+if [[ $# -lt 3 ]]; then
+	echo "Usage: ./geninput graphSize hopCount numSegments sabResist"
 	exit
 fi
 
 size=$1
 value=$(printf '%.0f' $size)
 hop=$(printf '%.0f' $2)
+segs=$(printf '%.0f' $3)
+sab=$(printf '%.0f' $4)
+mmprec=9
 mkdir -p graphdata
-exec/genChainUniformStretch $value 0 > graphdata/genChainUniformStretch${size}.txt
-exec/genChainExpStretch $value 0 > graphdata/genChainExpStretch${size}.txt
-exec/gen2MeshUnweightedUniformStretch $value 0 > graphdata/gen2MeshUnweightedUniformStretch${size}.txt
-exec/gen2MeshUnweightedExpStretch $value 0 > graphdata/gen2MeshUnweightedExpStretch${size}.txt
-exec/gen2MeshUniformStretch $value 0 > graphdata/gen2MeshUniformStretch${size}.txt
-exec/gen2MeshExpStretch $value 0 > graphdata/gen2MeshExpStretch${size}.txt
-exec/gen3MeshUnweightedUniformStretch $value 0 > graphdata/gen3MeshUnweightedUniformStretch${size}.txt
-exec/gen3MeshUnweightedExpStretch $value 0 > graphdata/gen3MeshUnweightedExpStretch${size}.txt
-exec/gen3MeshWeightedUniformStretch $value 0 > graphdata/gen3MeshWeightedUniformStretch${size}.txt
-exec/gen3MeshWeightedExpStretch $value 0 > graphdata/gen3MeshWeightedExpStretch${size}.txt
-exec/genFixedLengthUniformStretch $value $hop 0 1 > graphdata/genFixedLengthUniformStretch${size}.txt
-exec/genFixedLengthExpStretch $value $hop 0 1 > graphdata/genFixedLengthExpStretch${size}.txt
-exec/genRandomUniformStretch $value $((2*$value)) > graphdata/genRandomUniformStretch${size}.txt
-exec/genRandomExpStretch $value $((2*$value)) > graphdata/genRandomExpStretch${size}.txt
+mkdir -p graphdata/gen2Mesh
+mkdir -p graphdata/gen3Mesh
+mkdir -p graphdata/genFixedLength
+mkdir -p graphdata/genRandom
+mkdir -p graphdata/genSegments
+mkdir -p graphdata/genSegmentsSab
+mkdir -p graphdata/genChain
 
-for file in genChainUniformStretch genChainExpStretch gen2MeshUnweightedUniformStretch gen2MeshUnweightedExpStretch gen2MeshUniformStretch gen2MeshExpStretch gen3MeshUnweightedUniformStretch gen3MeshUnweightedExpStretch gen3MeshWeightedUniformStretch gen3MeshWeightedExpStretch genFixedLengthUniformStretch genFixedLengthExpStretch genRandomUniformStretch genRandomExpStretch
-do
-	exec/graphsp2mm graphdata/${file}${size}.txt graphdata/${file}${size}.mtx
-done
+echo 'gen2Mesh'
+exec/gen2Mesh/gen2MeshUnweightedUniformStretch graphdata/gen2Mesh/gen2MeshUnweightedUniformStretch${size} $value 
+exec/gen2Mesh/gen2MeshUnweightedExpStretch graphdata/gen2Mesh/gen2MeshUnweightedExpStretch${size} $value
+exec/gen2Mesh/gen2MeshWeightedUniformStretch graphdata/gen2Mesh/gen2MeshWeightedUniformStretch${size} $value $mmprec
+exec/gen2Mesh/gen2MeshWeightedExpStretch graphdata/gen2Mesh/gen2MeshWeightedExpStretch${size} $value $mmprec
+
+echo 'gen3Mesh'
+exec/gen3Mesh/gen3MeshUnweightedUniformStretch graphdata/gen3Mesh/gen3MeshUnweightedUniformStretch${size} $value 
+exec/gen3Mesh/gen3MeshUnweightedExpStretch graphdata/gen3Mesh/gen3MeshUnweightedExpStretch${size} $value
+exec/gen3Mesh/gen3MeshWeightedUniformStretch graphdata/gen3Mesh/gen3MeshWeightedUniformStretch${size} $value $mmprec
+exec/gen3Mesh/gen3MeshWeightedExpStretch graphdata/gen3Mesh/gen3MeshWeightedExpStretch${size} $value $mmprec
+
+echo 'genFixedLength'
+exec/genFixedLength/genFixedLengthUnweightedUniformStretch graphdata/genFixedLength/genFixedLengthUnweightedUniformStretch${size} $value $hop
+exec/genFixedLength/genFixedLengthUnweightedExpStretch graphdata/genFixedLength/genFixedLengthUnweightedExpStretch${size} $value $hop 1
+exec/genFixedLength/genFixedLengthWeightedUniformStretch graphdata/genFixedLength/genFixedLengthWeightedUniformStretch${size} $value $hop 1 $mmprec
+exec/genFixedLength/genFixedLengthWeightedExpStretch graphdata/genFixedLength/genFixedLengthWeightedExpStretch${size} $value $hop 1 $mmprec
+
+echo 'genChain'
+exec/genChain/genChainUnweightedUniformStretch graphdata/genChain/genChainUnweightedUniformStretch${size} $value
+exec/genChain/genChainUnweightedExpStretch graphdata/genChain/genChainUnweightedExpStretch${size} $value 1
+exec/genChain/genChainWeightedUniformStretch graphdata/genChain/genChainWeightedUniformStretch${size} $value 1 $mmprec
+exec/genChain/genChainWeightedExpStretch graphdata/genChain/genChainWeightedExpStretch${size} $value 1 $mmprec
+
+
+echo 'genRandom'
+exec/genRandom/genRandomUnweightedUniformStretch graphdata/genRandom/genRandomUnweightedUniformStretch${size} $value $value
+exec/genRandom/genRandomUnweightedExpStretch graphdata/genRandom/genRandomUnweightedExpStretch${size} $value $value
+exec/genRandom/genRandomWeightedUniformStretch graphdata/genRandom/genRandomWeightedUniformStretch${size} $value $value $mmprec
+exec/genRandom/genRandomWeightedExpStretch graphdata/genRandom/genRandomWeightedExpStretch${size} $value $value $mmprec
+
+echo 'genSegments'
+exec/genSegments/genSegmentsUnweightedUniformStretch graphdata/genSegments/genSegmentsUnweightedUniformStretch${size} $value $value $segs
+exec/genSegments/genSegmentsWeightedUniformStretch graphdata/genSegments/genSegmentsWeightedUniformStretch${size} $value $value $segs $mmprec
+exec/genSegments/genSegmentsUnweightedExpStretch graphdata/genSegments/genSegmentsUnweightedExpStretch${size} $value $value $segs $mmprec
+exec/genSegments/genSegmentsWeightedExpStretch  graphdata/genSegments/genSegmentsWeightedExpStretch${size} $value $value $segs $mmprec
+
+
+echo 'genSegmentsSab'
+exec/genSegmentsSab/genSegmentsSabUnweightedUniformStretch graphdata/genSegmentsSab/genSegmentsSabUnweightedUniformStretch${size} $value $value $segs $sab
+exec/genSegmentsSab/genSegmentsSabWeightedUniformStretch graphdata/genSegmentsSab/genSegmentsSabWeightedUniformStretch${size} $value $value $segs $sab $mmprec
+exec/genSegmentsSab/genSegmentsSabUnweightedExpStretch graphdata/genSegmentsSab/genSegmentsSabUnweightedExpStretch${size} $value $value $segs $sab $mmprec
+exec/genSegmentsSab/genSegmentsSabWeightedExpStretch  graphdata/genSegmentsSab/genSegmentsSabWeightedExpStretch${size} $value $value $segs $sab $mmprec
