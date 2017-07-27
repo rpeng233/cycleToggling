@@ -48,7 +48,12 @@ int main(int argc, char *argv[])
 
   mmfileout << "%%MatrixMarket matrix coordinate real symmetric" << std::endl;
   mmfileout << "%%" << std::endl;
+  mmfileout << "%%Structure Segments" << std::endl;
+  mmfileout << "%%Num Segments " << seg << std::endl;
+  mmfileout << "%%Path Weights Unweighted" << std::endl;
+  mmfileout << "%%Cycle Stretch UniformStretch" << std::endl;
   mmfileout << "%%Total Stretch " << m << std::endl;
+  mmfileout << "%%Precision Digits " << precdigits << std::endl;
   mmfileout << n << ' ' << n  << ' ' << m+n-1+n << std::endl;
 
   rfileout << n << ' ' << m+n-1 << std::endl;
@@ -101,7 +106,7 @@ int main(int argc, char *argv[])
       return -1;
     }
     rfileout << u << ' ' << v << ' ' << rS[v]-rS[u] << std::endl;
-    mmfileout << u+1 << ' ' << v+1 << ' ' << -roundr << std::endl;
+    mmfileout << u+1 << ' ' << v+1 << ' '  << std::setprecision(precdigits+1) << -roundr << std::endl;
     diag[u]+=roundr;
     diag[v]+=roundr;
   }

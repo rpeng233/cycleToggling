@@ -84,7 +84,12 @@ int main(int argc, char *argv[]) {
 
   mmfileout << "%%MatrixMarket matrix coordinate real symmetric" << std::endl;
   mmfileout << "%%" << std::endl;
+  mmfileout << "%%Structure FixedLength" << std::endl;
+  mmfileout << "%%Hop Length " << hop << std::endl;
+  mmfileout << "%%Path Weights RandomWeighted" << std::endl;
+  mmfileout << "%%Cycle Stretch ExpStretch" << std::endl;
   mmfileout << "%%Total Stretch " << stretch << std::endl;
+  mmfileout << "%%Precision Digits " << precdigits << std::endl;
   mmfileout << n << ' ' << n  << ' ' << m+n-1+n << std::endl;
 
   rfileout << n << ' ' << m+n-1 << std::endl;
@@ -97,7 +102,7 @@ int main(int argc, char *argv[]) {
       return -1;
     }
     rfileout << i << ' ' << i+1 << ' ' << rS[i+1]-rS[i] << std::endl; 
-    mmfileout << i+1 << ' ' << i+2 << ' ' << -roundr << std::endl; 
+    mmfileout << i+1 << ' ' << i+2 << ' '  << std::setprecision(precdigits+1) << -roundr << std::endl; 
     diag[i]+=roundr;
     diag[i+1]+=roundr;
   }
@@ -114,7 +119,7 @@ int main(int argc, char *argv[]) {
     }
     diag[u]+=roundr;
     diag[v]+=roundr;
-    mmfileout << u+1 << ' ' << v+1 << ' ' << -roundr << std::endl;
+    mmfileout << u+1 << ' ' << v+1 << ' '  << std::setprecision(precdigits+1) << -roundr << std::endl;
     rfileout << u << ' ' << v << ' ' << printVal[idx] << std::endl;
     idx++;
   }

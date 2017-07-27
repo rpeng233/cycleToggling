@@ -69,7 +69,11 @@ int main(int argc, char *argv[])
   
   mmfileout << "%%MatrixMarket matrix coordinate real symmetric" << std::endl;
   mmfileout << "%%" << std::endl;
+  mmfileout << "%%Structure 2Mesh" << std::endl;
+  mmfileout << "%%Path Weights RandomWeighted" << std::endl;
+  mmfileout << "%%Cycle Stretch UniformStretch" << std::endl;
   mmfileout << "%%Total Stretch " << m << std::endl;
+  mmfileout << "%%Precision Digits " << precdigits << std::endl;
   mmfileout << n << ' ' << n  << ' ' << m+n-1+n << std::endl;
   
   rfileout << n << ' ' << m+n-1 << std::endl;
@@ -87,7 +91,7 @@ int main(int argc, char *argv[])
       return -1;
     }
     rfileout << i << ' ' << i+1 << ' ' << rS[i+1]-rS[i] << std::endl;
-    mmfileout << i+1 << ' ' << i+2 << ' ' << -roundr << std::endl;
+    mmfileout << i+1 << ' ' << i+2 << ' ' << std::setprecision(precdigits+1) << -roundr << std::endl;
     diag[i]+=roundr;
     diag[i+1]+=roundr;
   }
@@ -105,7 +109,7 @@ int main(int argc, char *argv[])
             return -1;
           }
           rfileout << a[i][j] << ' ' << a[i][j+1] << ' ' << r << std::endl;
-          mmfileout << a[i][j]+1 << ' ' << a[i][j+1]+1 << ' ' << -roundr << std::endl;
+          mmfileout << a[i][j]+1 << ' ' << a[i][j+1]+1 << ' ' << std::setprecision(precdigits+1) << -roundr << std::endl;
           diag[a[i][j]]+=roundr;
           diag[a[i][j+1]]+=roundr;
         }
@@ -123,7 +127,7 @@ int main(int argc, char *argv[])
             return -1;
           }
           rfileout << a[j][i] << ' ' << a[j+1][i] << ' ' << r << std::endl;
-          mmfileout << a[j][i]+1 << ' ' << a[j+1][i]+1 << ' ' << -roundr << std::endl;
+          mmfileout << a[j][i]+1 << ' ' << a[j+1][i]+1 << ' ' << std::setprecision(precdigits+1) << -roundr << std::endl;
           diag[a[j][i]]+=roundr;
           diag[a[j+1][i]]+=roundr;
         }

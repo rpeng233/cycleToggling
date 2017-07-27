@@ -41,6 +41,11 @@ int main(int argc, char *argv[])
 
   double *rS = new double[n];
   double roundsab=round(pow(10.,precdigits)/sab_res)/pow(10.,precdigits);
+  if(roundsab == 0 || isnan(roundsab)) {
+    std::cerr << "increase precision beyond " << precdigits
+              << " because edge weights too small" << std::endl;
+    return -1;
+  }
 
   double *printVal = new double[m];
 
@@ -126,7 +131,13 @@ int main(int argc, char *argv[])
 
   mmfileout << "%%MatrixMarket matrix coordinate real symmetric" << std::endl;
   mmfileout << "%%" << std::endl;
+  mmfileout << "%%Structure SegmentsSab" << std::endl;
+  mmfileout << "%%Num Segments " << seg << std::endl;
+  mmfileout << "%%Sabotage Resistance " << sab_res << std::endl;
+  mmfileout << "%%Path Weights Unweighted(except segment connections)" << std::endl;
+  mmfileout << "%%Cycle Stretch ExpStretch" << std::endl;
   mmfileout << "%%Total Stretch " << stretch << std::endl;
+  mmfileout << "%%Precision Digits " << precdigits << std::endl;
   mmfileout << n << ' ' << n  << ' ' << m+n-1+n << std::endl;
 
   rfileout << n << ' ' << m+n-1 << std::endl;
@@ -135,7 +146,7 @@ int main(int argc, char *argv[])
     if((i+1)%seg_size == 0 || (i+2)%seg_size == 0) {
       diag[i]+=roundsab;
       diag[i+1]+=roundsab;
-      mmfileout << i+1 << ' ' << i+2 << ' ' << -roundsab << std::endl;
+      mmfileout << i+1 << ' ' << i+2 << ' '  << std::setprecision(precdigits+1) << -roundsab << std::endl;
       rfileout << i << ' ' << i+1 << ' ' << sab_res << std::endl;
     }
     else {
@@ -157,7 +168,7 @@ int main(int argc, char *argv[])
     
     diag[(*iter).first]+=roundr;
     diag[(*iter).second]+=roundr;
-    mmfileout << (*iter).first+1 << ' ' << (*iter).second+1 << ' ' << -roundr << std::endl;
+    mmfileout << (*iter).first+1 << ' ' << (*iter).second+1 << ' '  << std::setprecision(precdigits+1) << -roundr << std::endl;
     rfileout << (*iter).first << ' ' << (*iter).second << ' ' << printVal[idx] << std::endl;
     idx++;
   }

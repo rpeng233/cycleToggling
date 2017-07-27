@@ -84,7 +84,11 @@ int main(int argc, char *argv[]) {
 
   mmfileout << "%%MatrixMarket matrix coordinate real symmetric" << std::endl;
   mmfileout << "%%" << std::endl;
+  mmfileout << "%%Structure Chain" << std::endl;
+  mmfileout << "%%Path Weights RandomWeighted" << std::endl;
+  mmfileout << "%%Cycle Stretch ExpStretch" << std::endl;
   mmfileout << "%%Total Stretch " << stretch << std::endl;
+  mmfileout << "%%Precision Digits " << precdigits << std::endl;
   mmfileout << n << ' ' << n  << ' ' << m+n-1+n << std::endl;
 
   rfileout << n << ' ' << m+n-1 << std::endl;
